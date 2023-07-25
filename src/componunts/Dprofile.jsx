@@ -45,8 +45,7 @@ export default function Dprofile() {
         {
             data.map((item)=>(
                 <>
-                <div className='border rounded-md'>
-                <img src={item} alt="s"/> 
+                <div className='border rounded-md h-72 bg-cover bg-center' style={{backgroundImage: `url(${item})`}}>
                 </div>
                 </>
             ))
