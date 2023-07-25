@@ -5,6 +5,8 @@ import Login from "./componunts/Login"
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Resister from "./componunts/Resister";
 import Dprofile from './componunts/Dprofile';
+import Followlist from './componunts/Followlist';
+
 import './App.css';
 
 const router = createBrowserRouter([
@@ -26,6 +28,10 @@ const router = createBrowserRouter([
   {
     path:"/Dprofile",
     element:<Dprofile/>
+  },
+  {
+    path:"/Followlist",
+    element:<Followlist/>
   }
 ])
 

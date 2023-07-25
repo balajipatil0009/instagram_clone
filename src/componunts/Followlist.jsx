@@ -1,4 +1,5 @@
-export default function Dprofile() {
+
+export default function Followlist() {
     const data = [ 
         "https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg","https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg","https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg","https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg","https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
     ]
