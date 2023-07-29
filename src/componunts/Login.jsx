@@ -22,7 +22,6 @@ const handleChange = (e) =>{
 const getUser = async(e) =>{
   setloading(true);
     e.preventDefault();
-    const {gmail, password} = user;
     await axios.post('/login',user,{
       headers:{
         "Content-Type":"application/json"
@@ -139,6 +138,7 @@ const getUser = async(e) =>{
       </div>
     </div>
     <ToastContainer/>
+ 
   </div>
 
 

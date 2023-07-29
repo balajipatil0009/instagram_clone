@@ -7,28 +7,28 @@ import { RxBookmark } from "react-icons/rx";
 import { BsThreeDots } from "react-icons/bs";
 import axios from "../modules/axios";
 import { useCookies } from "react-cookie";
-
+import { useSelector  } from "react-redux";
 function posts() {
   const [cookie, setCookie, removeCookie]=useCookies(['token']);
   const [loading, setloading]= useState(true);
   const [posts, setPosts] = useState([]);
   const [like, setlike]= useState();
-  const [data, setData] = useState({email:""})
   const [img, setImg] = useState("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqrBsDzi5IlYCRcB38Z_w0nzc5l-yIKCq5WA&usqp=CAU");
 
   const getPosts = async() =>{
-    if(cookie.token!=""){ await axios.get('/sendPosts').then((res)=>{
+    if(cookie.token!=""){ 
+      await axios.get('/sendPosts').then((res)=>{
       setloading(false);
-      const ress = res.data;
       setPosts(res.data);
     })
-    await axios.get('/home').then((res)=>{
-      // console.log(res.data.email)
-      setData({email:res.data.email});
-    })}
-   
-    
+  }   
   }
+
+ const data= useSelector((state)=>{console.log(state.admin.caption) 
+  
+  return state.admin})
+  
+
 
   const handleLikes = useCallback(async(e) =>{
    // console.log(posts);
@@ -111,8 +111,8 @@ function posts() {
             </div>
             <div className="" key={item._id}>
               <div className="icons flex justify-between h-10 ">
-                <div className="flex" onClick={(e)=>{handleLikes({id:item._id,liked:item.like});item.like=!item.like}} key={item._id}>
-                 {item.like ? <AiFillHeart className="icons" /> : <AiOutlineHeart className="icons"/>} 
+                <div className="flex" onClick={()=>{handleLikes({id:item._id,liked:item.like});item.like=!item.like}} key={item._id}>
+                 {item.like ? <AiFillHeart className="icons text-red-500" /> : <AiOutlineHeart className="icons text-black"/>} 
                   <FaRegComment className="icons text-black" />
                   <PiPaperPlaneTiltBold className="icons text-black" />
                 </div>
@@ -122,7 +122,7 @@ function posts() {
               </div>
             </div>
           <div>
-          <p className="font-bold">{item.caption}</p>
+          <p className="font-bold text-black">{item.caption}</p>
           </div>
           </div>
         ))}

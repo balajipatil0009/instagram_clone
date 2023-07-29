@@ -2,8 +2,11 @@ import { useState , useEffect} from "react";
 import axios from "../modules/axios";
 import {useNavigate} from "react-router-dom";
 import { useCookies } from "react-cookie";
+import { addUser } from "../redux/userSlice";
+import { useDispatch } from "react-redux";
 
 function Profile() {
+  const dispatch = useDispatch();
   const [cookie, setCookie, removeCookie] = useCookies(['token'])
   const navigate = useNavigate();
   const [loading, setLoading]= useState(false);
@@ -30,6 +33,7 @@ function Profile() {
         case 200:{
           const resData = res.data;
           setData({email:resData.email,posts: resData.posts,caption: resData.caption})
+          dispatch(addUser(res.data))
           if(data.posts.length>0){
             setImg(data.posts[0])
           }
@@ -43,7 +47,8 @@ function Profile() {
         }
       }
     }).catch((e)=>{
-      navigate('/login');
+      // navigate('/login');
+      console.log(e);
     })
    
     }
